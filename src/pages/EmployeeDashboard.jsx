@@ -1,14 +1,22 @@
 import React from "react";
-import { useAuth } from "../context/authContext.jsx";
+import Navbar from '../components/Dashboard/Navbar.jsx'
+import { Outlet } from "react-router-dom";
+import { SideBar } from "../components/EmployeeDashboard/SideBar.jsx";
 
-function EmployeeDashboard() {
-  const { user } = useAuth();
+const EmployeeDashboard = () => {
+
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100 text-2xl font-semibold">
-      {user ? `${user.name}'s Employee Dashboard` : "Loading..."}
+    <div className="flex h-screen">
+      <SideBar />
+
+      <div className="flex-1 flex flex-col bg-gray-50 ">
+        <Navbar />
+        <Outlet/>
+      </div>
     </div>
-  );
-}
+
+  )
+};
 
 export default EmployeeDashboard;

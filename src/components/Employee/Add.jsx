@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { fetchDepartments } from '../../utils/EmployeeHelper';
 import axios from 'axios';
-import { useNavigate } from "react-router-dom"; // Added
+import { useNavigate } from "react-router-dom";
 
 const Add = () => {
-    const navigate = useNavigate(); // Added
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         employeeId: '',
-        dateOfBirth: '', // Frontend field
+        dateOfBirth: '',
         gender: '',
         maritalStatus: '',
         designation: '',
@@ -45,7 +45,6 @@ const Add = () => {
 
         const formDataobj = new FormData()
 
-        // Map dateOfBirth → dob to match backend
         Object.keys(formData).forEach((key) => {
             if (key === "dateOfBirth") {
                 formDataobj.append("dob", formData[key]);
@@ -184,9 +183,9 @@ const Add = () => {
                         className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
                     >
                         <option value="">Select Department</option>
-                        {departments.map((dep) => (
-                            <option key={dep._id} value={dep._id}>{dep.name}</option> // fixed key
-                        ))}
+                            {departments.map((dep) => (
+                                <option key={dep._id} value={dep._id}>{dep.dep_name}</option> // fixed key
+                            ))}
                     </select>
                 </div>
                 <div>
